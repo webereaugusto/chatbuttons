@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
-// Rotas - No Vercel, quando acessado via /api/*, o path completo é passado
+// Rotas - No Vercel, o path completo /api/* é passado para o handler
 app.use('/api/auth', authRoutes);
 app.use('/api/buttons', buttonRoutes);
 app.use('/api/script', scriptRoutes);
@@ -33,4 +33,8 @@ initDatabase().catch(err => {
 });
 
 // Handler para Vercel Serverless Functions
-export default app;
+// No Vercel, o path completo é passado, então o Express precisa lidar com /api/*
+export default (req, res) => {
+  // Garantir que o path está correto
+  return app(req, res);
+};
