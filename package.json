@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "cd frontend && npm install && npm run build"
   },
   "keywords": ["saas", "chat", "buttons"],
   "author": "",
@@ -26,4 +27,3 @@
     "nodemon": "^3.0.1"
   }
 }
-

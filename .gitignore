@@ -7,4 +7,7 @@ node_modules/
 dist/
 build/
 *.log
+data/
+frontend/dist/
+.vercel/
 
